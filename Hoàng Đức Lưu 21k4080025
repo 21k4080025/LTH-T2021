@@ -1,0 +1,137 @@
+using System;
+namespace bt5
+{
+    class program
+    {
+        static void Main()
+        {
+            Console.OutputEncoding=System.Text.Encoding.Unicode;
+            Console.WriteLine("Nhập điểm trung bình của học sinh:");
+            double ĐTB = double.Parse(Console.ReadLine());
+            string XepLoai = " ";
+            if(ĐTB >= 9.0)
+            {
+                XepLoai="Xuất Sắc";
+            }    
+            else
+                if ( ĐTB<9.0 && ĐTB >= 8.0)
+            {
+                XepLoai="Giỏi";
+            }    
+            else
+                if(ĐTB >=6.5 && ĐTB<8.0)
+                {
+                XepLoai="Khá";
+            }
+            else
+                if (ĐTB>=5.0  && ĐTB<6.5)
+            {
+                XepLoai="Trung Bình";
+            }    
+            else
+                if(ĐTB>=3.5 &&  ĐTB <5.0)
+            {
+                XepLoai ="Yếu";
+            }    
+            else
+                if(ĐTB<3.5)
+            {
+                XepLoai="Kém";
+            }    
+            Console.WriteLine("Xếp loại học sinh"+XepLoai);
+
+        }
+    }
+
+}
+---------------------------------------------------------------------------------
+using System;
+
+
+namespace bt6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+
+        {
+            Console.OutputEncoding=System.Text.Encoding.Unicode;
+            Console.Write("Nhập số tiền (Là bội số của 50,000): ");
+            int t = int.Parse(Console.ReadLine());
+
+            if (t % 50000 != 0)
+            {
+                Console.WriteLine("Số tiền không hợp lệ. Vui lòng nhập số tiền là bội số của 50,000.");
+                return;
+            }
+
+            int[] MenhGia = { 500000, 200000, 100000, 50000 };
+            int count;
+
+            Console.WriteLine($"Số tiền cần đổi: {t}");
+
+            for (int i = 0; i < MenhGia.Length; i++)
+            {
+                count = t / MenhGia[i];
+
+                if (count > 0)
+                {
+                    Console.WriteLine($"{MenhGia[i]} = {count} tờ");
+                    t %= MenhGia[i];
+                }
+            }
+        }
+    }
+}
+-------------------------------------------------------------------
+using System;
+
+
+namespace bt7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding=System.Text.Encoding.Unicode;
+            
+                Console.Write("Nhập chỉ số điện kWh: ");
+                double ChiSoDien = double.Parse(Console.ReadLine());
+
+                double GiaBanDien = TinhTienDien(ChiSoDien);
+                double ThueVAT = 0.1 * GiaBanDien;
+                double TongTien = GiaBanDien + ThueVAT;
+
+                Console.WriteLine($"Tổng tiền thanh toán: {TongTien:C}");
+            }
+
+            static double TinhTienDien(double ChiSoDien)
+            {
+                double GiaBanDien = 0;
+
+                if (ChiSoDien >= 1 && ChiSoDien <= 50)
+                    GiaBanDien = ChiSoDien * 1484;
+                else 
+                
+                    if (ChiSoDien >= 51 && ChiSoDien <= 100)
+                    GiaBanDien = ChiSoDien * 1533;
+                else 
+                if (ChiSoDien >= 101 && ChiSoDien <= 200)
+                    GiaBanDien = ChiSoDien * 1786;
+                else 
+                if (ChiSoDien >= 201 && ChiSoDien <= 300)
+                    GiaBanDien = ChiSoDien * 2242;
+                else 
+                if (ChiSoDien >= 301 && ChiSoDien <= 400)
+                    GiaBanDien = ChiSoDien * 2503;
+                else
+                if (ChiSoDien >= 401)
+                    GiaBanDien = ChiSoDien * 2587;
+
+                return GiaBanDien;
+            }
+        }
+
+    }
+
+
